@@ -1,4 +1,4 @@
-**Migrate Data from AWS Elasticache Redis to Alibaba Cloud Redis**
+**Migrate Data from AWS ElastiCache Redis to Alibaba Cloud Redis**
 
 Dec. 2018
 
