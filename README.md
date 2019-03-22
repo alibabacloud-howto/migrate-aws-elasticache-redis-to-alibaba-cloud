@@ -33,7 +33,7 @@ This technical solution includes the following main steps:
 
 -   Make a backup of the data from AWS Elasticache Redis.
 
--   Export that backup to the AWS S3 bucket, that will produce a RDB file.
+-   Export that backup to an AWS S3 bucket, that will produce a RDB file.
 
 -   Transfer the RDB file to an Alibaba Cloud ECS instance.
 
