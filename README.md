@@ -2,7 +2,7 @@
 
 ## Summary
 1. [Introduction](#introduction)
-2. [Backup and export data from AWS Elasticache Redis to S3 Bucket](#backup-and-export-data-from-aws-elasticache-redis-to-s3-bucket)
+2. [Backup and export data from an AWS Elasticache Redis cluster to an S3 Bucket](#backup-and-export-data-from-an-aws-elasticache-redis-cluster-to-an-s3-bucket)
 3. [Restore the RDB file to an ApsaraDB for Redis instance](#restore-the-rdb-file-to-an-apsaradb-for-redis-instance)
 4. [Further Reading](#further-reading)
 5. [Support](#support)
@@ -36,10 +36,11 @@ This technical solution includes the following main steps:
 
 -   Transfer the RDB file to an Alibaba Cloud ECS instance.
 
--   Restore the RDB file to a ApsaraDB for Redis instance by using [redis-port](https://github.com/CodisLabs/redis-port).
+-   Restore the RDB file to an [ApsaraDB for Redis](https://www.alibabacloud.com/product/apsaradb-for-redis) instance
+    by using [redis-port](https://github.com/CodisLabs/redis-port).
 
-## Backup and export data from AWS Elasticache Redis to S3 Bucket
-The following operations are performed on AWS.
+## Backup and export data from an AWS Elasticache Redis cluster to an S3 Bucket
+The following operations must be performed on AWS:
 
 -   Stop writing data into the AWS Elasticache Redis instance.
 
@@ -74,7 +75,7 @@ The following operations are performed on AWS.
     -   Download the RDB file from your S3 bucket.
 
     -   Upload the RDB file to your Alibaba Cloud ECS instance via
-        [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) (save it on the disk).
+        [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) (save it on the ECS instance disk).
 
 ## Restore the RDB file to an ApsaraDB for Redis instance
 -   Download [redis-port](https://github.com/CodisLabs/redis-port):
@@ -133,7 +134,7 @@ The following operations are performed on AWS.
 
     In this example, we see in the logs that *437976* keys have been imported into the ApsaraDB for Redis instance.
 
-    Let's check in the source instance (AWS Eleasticache Redis instance) via the client tool **redis-cli**:
+    Let's have a look at the source instance (AWS Eleasticache Redis instance) via the client tool **redis-cli**:
     
     ```
     redis-cluster.*****.ng.0001.apne1.cache.amazonaws.com:6379\> info keyspace
@@ -141,7 +142,7 @@ The following operations are performed on AWS.
     db1:keys=437976,expires=0,avg_ttl=0
     ```
     
-    You can also access to this Redis instance via a GUI client tool, such as **RedisDesktopManager**:
+    You can also access to this Redis instance via a GUI client tool, such as **Redis Desktop Manager**:
 
     ![](images/9a81981d7890dec9ccd49ac789f03625.png)
 
@@ -156,10 +157,10 @@ The following operations are performed on AWS.
 
     ![](images/462465fbccdff9f10e03f6ca39f0f22a.png)
 
--   We can now switch the traffic from the Redis instance on AWS to the new one on Alibaba Cloud.
+-   We can now switch the traffic from the old Redis instance on AWS to the new one on Alibaba Cloud.
 
 ## Further Reading
-* [Documentation about migrating data from an on-premises Redis cluster to an ApsaraDB Redis cluster](https://www.alibabacloud.com/help/doc-detail/85180.htm)
+* [Documentation about migrating data from an on-premises Redis cluster to an ApsaraDB Redis cluster.](https://www.alibabacloud.com/help/doc-detail/85180.htm)
 
 ## Support
 Don't hesitate to [contact us](mailto:projectdelivery@alibabacloud.com) if you have questions or remarks.
