@@ -1,4 +1,4 @@
-# Migrate Data from AWS ElastiCache Redis to Alibaba Cloud Redis
+# Migrate data from AWS ElastiCache Redis to Alibaba Cloud Redis
 
 ## Summary
 1. [Introduction](#introduction)
@@ -9,19 +9,19 @@
 6. [Support](#support)
 
 ## Introduction
-In this document, we will introduce a method for migrating data from AWS
-Elasticache Redis to Alibaba Cloud for Redis instances. Since the current
-Alibaba Cloud DTS service does not support the Redis instance of the cloud
-service instance as the source, for example, the AWS Elasticache Redis instance
-does not include or has disabled the sync/psync command, so we provide this
-technical solution for those who need it.
+In this document, we introduce a method for migrating data from 
+[AWS Elasticache Redis](https://aws.amazon.com/elasticache/redis/) to
+[Alibaba Cloud for Redis](https://www.alibabacloud.com/product/apsaradb-for-redis). The current
+[Alibaba Cloud DTS service](https://www.alibabacloud.com/product/data-transmission-service) normally supports
+migrating data from Redis, but unfortunately this is not possible from AWS, because the sync/psync commands are
+disabled. This document provides a workaround for this technical problem.
 
 **Note**:
 
--   This solution needs to plan business downtime for implementing.
+-   This solution requires some business downtime, please plan accordingly.
 
--   If your Redis instance to be migrated is self-build on servers, we recommend
-    you migrate data with [Alibaba Cloud DTS service](https://www.alibabacloud.com/product/data-transmission-service).
+-   If the Redis instance to migrate is managed by you on your servers, we recommend to migrate data with
+    [Alibaba Cloud DTS service](https://www.alibabacloud.com/product/data-transmission-service).
 
 The overall network architecture is as follows：
 
