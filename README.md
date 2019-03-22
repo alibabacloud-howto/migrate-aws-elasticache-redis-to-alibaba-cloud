@@ -3,10 +3,9 @@
 ## Summary
 1. [Introduction](#introduction)
 2. [Backup and export data from AWS Elasticache Redis to S3 Bucket](#backup-and-export-data-from-aws-elasticache-redis-to-s3-bucket)
-3. [Restore RDB file to ApsaraDB for Redis instance](#restore-rdb-file-to-apsaradb-for-redis-instance)
-4. [Conclusion](#conclusion)
-5. [Further Reading](#further-reading)
-6. [Support](#support)
+3. [Restore the RDB file to an ApsaraDB for Redis instance](#restore-the-rdb-file-to-an-apsaradb-for-redis-instance)
+4. [Further Reading](#further-reading)
+5. [Support](#support)
 
 ## Introduction
 In this document, we introduce a method for migrating data from 
@@ -77,14 +76,14 @@ The following operations are performed on AWS.
     -   Upload the RDB file to your Alibaba Cloud ECS instance via
         [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) (save it on the disk).
 
-## Restore RDB file to ApsaraDB for Redis instance
--   Download redis-port tool:
+## Restore the RDB file to an ApsaraDB for Redis instance
+-   Download [redis-port](https://github.com/CodisLabs/redis-port):
 
     ```bash
     wget http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/85829/cn_zh/1533199526614/redis-port%282%29
     ```
 
--   Restore rdb file to ApsaraDB for Redis instance:
+-   Restore the RDB file to your ApsaraDB for Redis instance:
 
     ```bash
     nohup ./redis-port restore \
@@ -96,7 +95,8 @@ The following operations are performed on AWS.
         --rewrite &
     ```
 
-    You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md).
+    > Note: You can find the complete description of this command in
+    > [the official documentation](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md).
 
 -   View the restore log records:
 
@@ -128,13 +128,12 @@ The following operations are performed on AWS.
     2018/12/12 18:00:00 [INFO] total = 122286452 - 122286452 [100%] entry=437976
     2018/12/12 18:00:00 [INFO] restore: rdb done*
     ```
+    
 -   Check the result:
 
-    From redis-port log records, we can find *437976* keys has been imported
-    into ApsaraDB for Redis instance.
+    In this example, we see in the logs that *437976* keys have been imported into the ApsaraDB for Redis instance.
 
-    And we can check in the source instance which is located in AWS Eleasticache
-    Redis instance via client tool **redis-cli**:
+    Let's check in the source instance (AWS Eleasticache Redis instance) via the client tool **redis-cli**:
     
     ```
     redis-cluster.*****.ng.0001.apne1.cache.amazonaws.com:6379\> info keyspace
@@ -142,29 +141,22 @@ The following operations are performed on AWS.
     db1:keys=437976,expires=0,avg_ttl=0
     ```
     
-    You can also access Redis instance by GUI client tool, such as screenshot of
-    **RedisDesktopManager** for accessing AWS Elasticache Redis instance:
+    You can also access to this Redis instance via a GUI client tool, such as **RedisDesktopManager**:
 
     ![](images/9a81981d7890dec9ccd49ac789f03625.png)
 
-    Alibaba Cloud DMS console for Redis screenshot, you can find the Keys number
-    is as same as it in AWS:
+    In the target Redis instance, thanks to the Alibaba Cloud DMS console, we can find that the number of keys
+    is the same:
 
     ![](images/19c311f9d3979c945014dc04d0a442dc.png)
 
     ![](images/cf0dd3d0d2681fa58ae620058ac41aba.png)
 
-    Search some information to verify the data:
+    We can search for some information to verify the data:
 
     ![](images/462465fbccdff9f10e03f6ca39f0f22a.png)
 
--   Make a plan to perform service traffic switchover to ApsaraDB for Redis instance.
-
->   Skip
-
-## Conclusion
-From the case above, it’s possible to migrate data from AWS Elasticache
-Redis to Alibaba ApsaraDB for Redis instance.
+-   We can now switch the traffic from the Redis instance on AWS to the new one on Alibaba Cloud.
 
 ## Further Reading
 [Document Center \> ApsaraDB for Redis User Guide \> Migrate data](https://www.alibabacloud.com/help/doc-detail/85180.htm)
