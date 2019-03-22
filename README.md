@@ -6,6 +6,7 @@
 3. [Restore RDB file to ApsaraDB for Redis instance](#restore-rdb-file-to-apsaradb-for-redis-instance)
 4. [Conclusion](#conclusion)
 5. [Further Reading](#further-reading)
+6. [Support](#support)
 
 ## Introduction
 In this document, we will introduce a method for migrating data from AWS
@@ -206,5 +207,7 @@ Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-expo
 >   Redis to Alibaba ApsaraDB for Redis instance.
 
 ## Further Reading
--   [Document Center \> ApsaraDB for Redis User Guide \> Migrate data
-    ](https://www.alibabacloud.com/help/doc-detail/85180.htm?spm=a2c63.p38356.a1.4.3fdadcd28nrUzM)
+-   [Document Center \> ApsaraDB for Redis User Guide \> Migrate data](https://www.alibabacloud.com/help/doc-detail/85180.htm?spm=a2c63.p38356.a1.4.3fdadcd28nrUzM)
+
+## Support
+Don't hesitate to [contact us](mailto:projectdelivery@alibabacloud.com) if you have questions or remarks.
