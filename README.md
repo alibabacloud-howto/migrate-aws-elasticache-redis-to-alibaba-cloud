@@ -23,11 +23,11 @@ disabled. This document provides a workaround for this technical problem.
 -   If the Redis instance to migrate is managed by you on your servers, we recommend to migrate data with
     [Alibaba Cloud DTS service](https://www.alibabacloud.com/product/data-transmission-service).
 
-The overall network architecture is as follows：
+The overall network architecture is as follows:
 
-![](images/ff4dae597426ec25f2187d06b573bef2.png)
+![](images/network_architecture.png)
 
-This technical solution mainly includes the following main steps:
+This technical solution includes the following main steps:
 
 -   Stop application to write data into AWS Elasticache Redis instance.
 
