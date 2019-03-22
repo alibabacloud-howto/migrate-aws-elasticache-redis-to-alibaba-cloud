@@ -21,8 +21,7 @@ technical solution for those who need it.
 -   This solution needs to plan business downtime for implementing
 
 -   If your Redis instance to be migrated is self-build on servers, we recommend
-    you migrate data with [Alibaba Cloud DTS
-    service](https://www.alibabacloud.com/product/data-transmission-service).
+    you migrate data with [Alibaba Cloud DTS service](https://www.alibabacloud.com/product/data-transmission-service).
 
 The overall network architecture is as follows：
 
@@ -54,8 +53,7 @@ After it complete, you can find it in **Backups**:
 
 ![](images/42348e56fedd06a3396f17f3692256dc.png)
 
-Learn more from [Making Manual
-Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html)
+Learn more from [Making Manual Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html)
 
 -   **Export** backup to AWS S3 bucket
 
@@ -69,8 +67,7 @@ You can find exported files in S3 bucket:
 
 ![](images/dd908c64fb94d344a8ade9378fb36207.png)
 
-Learn more from [Exporting a
-Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
+Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
 
 -   Download and transform rdb file to cloud disk on Alibaba Cloud ECS instance
 
@@ -100,8 +97,7 @@ Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-expo
 
 >   *--rewrite &*
 
->   You can find option description from [README of
->   redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md)
+>   You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md)
 
 -   View the restore log records:
 
