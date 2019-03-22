@@ -2,7 +2,7 @@
 
 ## Summary
 1. [Introduction](#introduction)
-2. [Backup and Export Data from AWS Elasticache Redis to S3 Bucket](#backup-and-export-data-from-aws-elasticache-redis-to-s3-bucket)
+2. [Backup and export data from AWS Elasticache Redis to S3 Bucket](#backup-and-export-data-from-aws-elasticache-redis-to-s3-bucket)
 3. [Restore RDB file to ApsaraDB for Redis instance](#restore-rdb-file-to-apsaradb-for-redis-instance)
 4. [Conclusion](#conclusion)
 5. [Further Reading](#further-reading)
@@ -39,20 +39,21 @@ This technical solution includes the following main steps:
 
 -   Restore the RDB file to a ApsaraDB for Redis instance by using [redis-port](https://github.com/CodisLabs/redis-port).
 
-## Backup and Export Data from AWS Elasticache Redis to S3 Bucket
-All following operations are performed on AWS.
+## Backup and export data from AWS Elasticache Redis to S3 Bucket
+The following operations are performed on AWS.
 
--   Stop writing data into AWS Elasticache Redis instance.
+-   Stop writing data into the AWS Elasticache Redis instance.
 
--   Create **Backup** to specific cluster:
+-   Create a **backup** of your cluster:
 
     ![](images/5905fb087626c9895e2af18963921adb.png)
 
-    After it complete, you can find it in **Backups**:
+    After it is completed, you can find it in the **Backups** page:
 
     ![](images/42348e56fedd06a3396f17f3692256dc.png)
 
-    Learn more from [Making Manual Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html).
+    > Note: you can learn more about how to make manual backups by reading
+    > [this documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html).
 
 -   **Export** backup to AWS S3 bucket:
 
