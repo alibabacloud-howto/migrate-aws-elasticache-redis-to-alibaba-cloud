@@ -29,16 +29,15 @@ The overall network architecture is as follows:
 
 This technical solution includes the following main steps:
 
--   Stop application to write data into AWS Elasticache Redis instance.
+-   Stop applications that write data into the AWS Elasticache Redis instance.
 
--   Make a backup of the data in AWS Elasticache Redis.
+-   Make a backup of the data from AWS Elasticache Redis.
 
--   Export that backup-set to the AWS S3 bucket to get the RDB file.
+-   Export that backup to the AWS S3 bucket, that will produce a RDB file.
 
--   Transfer the RDB file to the pre-created Alibaba Cloud ECS storage.
+-   Transfer the RDB file to an Alibaba Cloud ECS instance.
 
--   Restore the RDB file to the pre-created ApsaraDB for Redis instance using
-    the redis-port tool.
+-   Restore the RDB file to a ApsaraDB for Redis instance by using [redis-port](https://github.com/CodisLabs/redis-port).
 
 ## Backup and Export Data from AWS Elasticache Redis to S3 Bucket
 All following operations are performed on AWS.
