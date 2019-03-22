@@ -33,7 +33,7 @@ This technical solution mainly includes the following main steps:
 
 -   Make a backup of the data in AWS Elasticache Redis
 
--   Exporte that backup-set to the AWS S3 bucket to get the RDB file
+-   Export that backup-set to the AWS S3 bucket to get the RDB file
 
 -   Transfer the RDB file to the pre-created Alibaba Cloud ECS storage.
 
@@ -47,27 +47,27 @@ All following operations are performed on AWS.
 
 -   Create **Backup** to specific cluster
 
-![](images/5905fb087626c9895e2af18963921adb.png)
+    ![](images/5905fb087626c9895e2af18963921adb.png)
 
-After it complete, you can find it in **Backups**:
+    After it complete, you can find it in **Backups**:
 
-![](images/42348e56fedd06a3396f17f3692256dc.png)
+    ![](images/42348e56fedd06a3396f17f3692256dc.png)
 
-Learn more from [Making Manual Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html)
+    Learn more from [Making Manual Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html)
 
 -   **Export** backup to AWS S3 bucket
 
-![](images/53a7b81b5b7a6f7bcf63cf989f40fb11.png)
+    ![](images/53a7b81b5b7a6f7bcf63cf989f40fb11.png)
 
-After clicking button **Copy**, the exporting process will be starting:
+    After clicking button **Copy**, the exporting process will be starting:
 
-![](images/293b7e6b326b0ac9ce1cb65ef09bd42b.png)
+    ![](images/293b7e6b326b0ac9ce1cb65ef09bd42b.png)
 
-You can find exported files in S3 bucket:
+    You can find exported files in S3 bucket:
 
-![](images/dd908c64fb94d344a8ade9378fb36207.png)
+    ![](images/dd908c64fb94d344a8ade9378fb36207.png)
 
-Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
+    Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
 
 -   Download and transform rdb file to cloud disk on Alibaba Cloud ECS instance
 
@@ -94,7 +94,7 @@ Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCac
         --rewrite &
     ```
 
-    >   You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md)
+    You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md)
 
 -   View the restore log records:
 
@@ -140,32 +140,32 @@ Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCac
     db1:keys=437976,expires=0,avg_ttl=0
     ```
     
-    You can alos access Redis instance by GUI client tool, such as screenshot of
+    You can also access Redis instance by GUI client tool, such as screenshot of
     **RedisDesktopManager** for accessing AWS Elasticache Redis instance:
 
-![](images/9a81981d7890dec9ccd49ac789f03625.png)
+    ![](images/9a81981d7890dec9ccd49ac789f03625.png)
 
->   Alibaba Cloud DMS console for Redis screenshot, you can find the Keys number
->   is as same as it in AWS:
+    Alibaba Cloud DMS console for Redis screenshot, you can find the Keys number
+    is as same as it in AWS:
 
-![](images/19c311f9d3979c945014dc04d0a442dc.png)
+    ![](images/19c311f9d3979c945014dc04d0a442dc.png)
 
-![](images/cf0dd3d0d2681fa58ae620058ac41aba.png)
+    ![](images/cf0dd3d0d2681fa58ae620058ac41aba.png)
 
->   Search some information to verify the data:
+    Search some information to verify the data:
 
-![](images/462465fbccdff9f10e03f6ca39f0f22a.png)
+    ![](images/462465fbccdff9f10e03f6ca39f0f22a.png)
 
 -   Make a plan to perform service traffic switchover to ApsaraDB for Redis instance
 
 >   Skip
 
 ## Conclusion
->   From the case above, it’s possible to migrate data from AWS Elasticache
->   Redis to Alibaba ApsaraDB for Redis instance.
+From the case above, it’s possible to migrate data from AWS Elasticache
+Redis to Alibaba ApsaraDB for Redis instance.
 
 ## Further Reading
--   [Document Center \> ApsaraDB for Redis User Guide \> Migrate data](https://www.alibabacloud.com/help/doc-detail/85180.htm)
+[Document Center \> ApsaraDB for Redis User Guide \> Migrate data](https://www.alibabacloud.com/help/doc-detail/85180.htm)
 
 ## Support
 Don't hesitate to [contact us](mailto:projectdelivery@alibabacloud.com) if you have questions or remarks.
