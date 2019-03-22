@@ -1,10 +1,6 @@
-**Migrate Data from AWS ElastiCache Redis to Alibaba Cloud Redis**
+# Migrate Data from AWS ElastiCache Redis to Alibaba Cloud Redis
 
-Dec. 2018
-
-Abstract
-========
-
+## Abstract
 In this document, we will introduce a method for migrating data from AWS
 Elasticache Redis to Alibaba Cloud for Redis instances. Since the current
 Alibaba Cloud DTS service does not support the Redis instance of the cloud
@@ -37,9 +33,7 @@ This technical solution mainly includes the following main steps:
 -   Restore the RDB file to the pre-created ApsaraDB for Redis instance using
     the redis-port tool
 
-Backup and Export Data from AWS Elasticache Redis to S3 Bucket
-==============================================================
-
+## Backup and Export Data from AWS Elasticache Redis to S3 Bucket
 All following operations are performed on AWS.
 
 -   Stop writing data into AWS Elasticache Redis instance.
@@ -76,9 +70,7 @@ Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-expo
 
     -   Upload rdb file to Alibaba Cloud ECS instance via SFTP protocol
 
-Restore RDB file to ApsaraDB for Redis instance
-===============================================
-
+## Restore RDB file to ApsaraDB for Redis instance
 -   Download redis-port tool
 
 >   \# wget
@@ -202,14 +194,10 @@ Restore RDB file to ApsaraDB for Redis instance
 
 >   Skip
 
-Conclusion
-==========
-
+## Conclusion
 >   From the case above, it’s possible to migrate data from AWS Elasticache
 >   Redis to Alibaba ApsaraDB for Redis instance.
 
-Further Reading
-===============
-
+## Further Reading
 -   [Document Center \> ApsaraDB for Redis User Guide \> Migrate data
     ](https://www.alibabacloud.com/help/doc-detail/85180.htm?spm=a2c63.p38356.a1.4.3fdadcd28nrUzM)
