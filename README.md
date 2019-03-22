@@ -159,7 +159,7 @@ The following operations are performed on AWS.
 -   We can now switch the traffic from the Redis instance on AWS to the new one on Alibaba Cloud.
 
 ## Further Reading
-[Document Center \> ApsaraDB for Redis User Guide \> Migrate data](https://www.alibabacloud.com/help/doc-detail/85180.htm)
+* [Documentation about migrating data from an on-premises Redis cluster to an ApsaraDB Redis cluster](https://www.alibabacloud.com/help/doc-detail/85180.htm)
 
 ## Support
 Don't hesitate to [contact us](mailto:projectdelivery@alibabacloud.com) if you have questions or remarks.
