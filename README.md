@@ -22,7 +22,7 @@ technical solution for those who need it.
 
 The overall network architecture is as follows：
 
-![](media/ff4dae597426ec25f2187d06b573bef2.png)
+![](images/ff4dae597426ec25f2187d06b573bef2.png)
 
 This technical solution mainly includes the following main steps:
 
@@ -46,26 +46,26 @@ All following operations are performed on AWS.
 
 -   Create **Backup** to specific cluster
 
-![](media/5905fb087626c9895e2af18963921adb.png)
+![](images/5905fb087626c9895e2af18963921adb.png)
 
 After it complete, you can find it in **Backups**:
 
-![](media/42348e56fedd06a3396f17f3692256dc.png)
+![](images/42348e56fedd06a3396f17f3692256dc.png)
 
 Learn more from [Making Manual
 Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html)
 
 -   **Export** backup to AWS S3 bucket
 
-![](media/53a7b81b5b7a6f7bcf63cf989f40fb11.png)
+![](images/53a7b81b5b7a6f7bcf63cf989f40fb11.png)
 
 After clicking button **Copy**, the exporting process will be starting:
 
-![](media/293b7e6b326b0ac9ce1cb65ef09bd42b.png)
+![](images/293b7e6b326b0ac9ce1cb65ef09bd42b.png)
 
 You can find exported files in S3 bucket:
 
-![](media/dd908c64fb94d344a8ade9378fb36207.png)
+![](images/dd908c64fb94d344a8ade9378fb36207.png)
 
 Learn more from [Exporting a
 Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
@@ -185,18 +185,18 @@ Restore RDB file to ApsaraDB for Redis instance
 >   You can alos access Redis instance by GUI client tool, such as creenshot of
 >   **RedisDesktopManager** for accessing AWS Elasticache Redis instance:
 
-![](media/9a81981d7890dec9ccd49ac789f03625.png)
+![](images/9a81981d7890dec9ccd49ac789f03625.png)
 
 >   Alibaba Cloud DMS console for Redis screenshot, you can find the Keys number
 >   is as same as it in AWS:
 
-![](media/19c311f9d3979c945014dc04d0a442dc.png)
+![](images/19c311f9d3979c945014dc04d0a442dc.png)
 
-![](media/cf0dd3d0d2681fa58ae620058ac41aba.png)
+![](images/cf0dd3d0d2681fa58ae620058ac41aba.png)
 
 >   Search some information to verify the data:
 
-![](media/462465fbccdff9f10e03f6ca39f0f22a.png)
+![](images/462465fbccdff9f10e03f6ca39f0f22a.png)
 
 -   Make a plan to perform service traffic switchover to ApsaraDB for Redis instance
 
