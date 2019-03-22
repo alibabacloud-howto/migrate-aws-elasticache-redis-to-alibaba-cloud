@@ -78,108 +78,70 @@ Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCac
 ## Restore RDB file to ApsaraDB for Redis instance
 -   Download redis-port tool
 
->   \# wget
->   <http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/85829/cn_zh/1533199526614/redis-port%282%29>
+    ```bash
+    wget http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/85829/cn_zh/1533199526614/redis-port%282%29
+    ```
 
 -   Restore rdb file to ApsaraDB for Redis instance
 
->   *\# nohup ./redis-port restore \\*
+    ```bash
+    nohup ./redis-port restore \
+        --ncpu=4 \
+        --parallel=16 \
+        --input=/root/redis-*****-0001.rdb \
+        --target=r-6w*****b4.redis.japan.rds.aliyuncs.com:6379 \
+        --auth=3*****M \
+        --rewrite &
+    ```
 
->   *--ncpu=4 \\*
-
->   *--parallel=16 \\*
-
->   *--input=/root/redis-\*\*\*\*\*-0001.rdb \\*
-
->   *--target=r-6w\*\*\*\*\*b4.redis.japan.rds.aliyuncs.com:6379 \\*
-
->   *--auth=3\*\*\*\*\*M \\*
-
->   *--rewrite &*
-
->   You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md)
+    >   You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md)
 
 -   View the restore log records:
 
->   *[root\@iZ6we9xja5r3v7eg98h711Z \~]\# cat nohup.out*
-
->   *2018/12/12 17:59:46 [INFO] set ncpu = 4, parallel = 16 filterdb = 0
->   targetdb = -1*
-
->   *2018/12/12 17:59:46 [INFO] set ncpu = 4, parallel = 16 filterdb = 0
->   targetdb = -1*
-
->   *2018/12/12 17:59:46 [INFO] restore from '/root/redis-\*\*\*\*\*-0001.rdb'
->   to 'r-6w\*\*\*\*\*b4.redis.japan.rds.aliyuncs.com:6379'*
-
->   *2018/12/12 17:59:46 [INFO] Aux information key:redis-ver value:3.2.10*
-
->   *2018/12/12 17:59:46 [INFO] Aux information key:redis-bits value:64*
-
->   *2018/12/12 17:59:46 [INFO] Aux information key:ctime value:1544608041*
-
->   *2018/12/12 17:59:46 [INFO] Aux information key:used-mem value:244890896*
-
->   *2018/12/12 17:59:46 [INFO] db_size:437976 expire_size:0*
-
->   *2018/12/12 17:59:47 [INFO] total = 122286452 - 9357881 [ 7%] entry=32756*
-
->   *2018/12/12 17:59:48 [INFO] total = 122286452 - 18662514 [ 15%] entry=66288*
-
->   *2018/12/12 17:59:49 [INFO] total = 122286452 - 27752788 [ 22%] entry=99276*
-
->   *2018/12/12 17:59:50 [INFO] total = 122286452 - 37372590 [ 30%]
->   entry=133868*
-
->   *2018/12/12 17:59:51 [INFO] total = 122286452 - 46389965 [ 37%]
->   entry=164759*
-
->   *2018/12/12 17:59:52 [INFO] total = 122286452 - 55926014 [ 45%]
->   entry=199223*
-
->   *2018/12/12 17:59:53 [INFO] total = 122286452 - 65357538 [ 53%]
->   entry=233143*
-
->   *2018/12/12 17:59:54 [INFO] total = 122286452 - 74688625 [ 61%]
->   entry=267014*
-
->   *2018/12/12 17:59:55 [INFO] total = 122286452 - 83164536 [ 68%]
->   entry=295837*
-
->   *2018/12/12 17:59:56 [INFO] total = 122286452 - 92365997 [ 75%]
->   entry=329300*
-
->   *2018/12/12 17:59:57 [INFO] total = 122286452 - 102081024 [ 83%]
->   entry=364418*
-
->   *2018/12/12 17:59:58 [INFO] total = 122286452 - 111328898 [ 91%]
->   entry=397830*
-
->   *2018/12/12 17:59:59 [INFO] total = 122286452 - 120745972 [ 98%]
->   entry=431922*
-
->   *2018/12/12 18:00:00 [INFO] total = 122286452 - 122286452 [100%]
->   entry=437976 /*
-
->   *2018/12/12 18:00:00 [INFO] restore: rdb done*
-
+    ```bash
+    cat nohup.out
+    ```
+    ```
+    2018/12/12 17:59:46 [INFO] set ncpu = 4, parallel = 16 filterdb = 0 targetdb = -1
+    2018/12/12 17:59:46 [INFO] set ncpu = 4, parallel = 16 filterdb = 0 targetdb = -1
+    2018/12/12 17:59:46 [INFO] restore from '/root/redis-*****-0001.rdb' to 'r-6w*****b4.redis.japan.rds.aliyuncs.com:6379'
+    2018/12/12 17:59:46 [INFO] Aux information key:redis-ver value:3.2.10
+    2018/12/12 17:59:46 [INFO] Aux information key:redis-bits value:64
+    2018/12/12 17:59:46 [INFO] Aux information key:ctime value:1544608041
+    2018/12/12 17:59:46 [INFO] Aux information key:used-mem value:244890896
+    2018/12/12 17:59:46 [INFO] db_size:437976 expire_size:0
+    2018/12/12 17:59:47 [INFO] total = 122286452 - 9357881 [ 7%] entry=32756
+    2018/12/12 17:59:48 [INFO] total = 122286452 - 18662514 [ 15%] entry=66288
+    2018/12/12 17:59:49 [INFO] total = 122286452 - 27752788 [ 22%] entry=99276
+    2018/12/12 17:59:50 [INFO] total = 122286452 - 37372590 [ 30%] entry=133868
+    2018/12/12 17:59:51 [INFO] total = 122286452 - 46389965 [ 37%] entry=164759
+    2018/12/12 17:59:52 [INFO] total = 122286452 - 55926014 [ 45%] entry=199223
+    2018/12/12 17:59:53 [INFO] total = 122286452 - 65357538 [ 53%] entry=233143
+    2018/12/12 17:59:54 [INFO] total = 122286452 - 74688625 [ 61%] entry=267014
+    2018/12/12 17:59:55 [INFO] total = 122286452 - 83164536 [ 68%] entry=295837
+    2018/12/12 17:59:56 [INFO] total = 122286452 - 92365997 [ 75%] entry=329300
+    2018/12/12 17:59:57 [INFO] total = 122286452 - 102081024 [ 83%] entry=364418
+    2018/12/12 17:59:58 [INFO] total = 122286452 - 111328898 [ 91%] entry=397830
+    2018/12/12 17:59:59 [INFO] total = 122286452 - 120745972 [ 98%] entry=431922
+    2018/12/12 18:00:00 [INFO] total = 122286452 - 122286452 [100%] entry=437976
+    2018/12/12 18:00:00 [INFO] restore: rdb done*
+    ```
 -   Check the result
 
->   From redis-port log records, we can find *437976* keys has been imported
->   into ApsaraDB for Redis instance.
+    From redis-port log records, we can find *437976* keys has been imported
+    into ApsaraDB for Redis instance.
 
->   And we can check in the source instance which is located in AWS Eleasticache
->   Redis instance via client tool **redis-cli** :
-
->   *redis-cluster.\*\*\*\*\*.ng.0001.apne1.cache.amazonaws.com:6379\> info
->   keyspace*
-
->   *\# Keyspace*
-
->   *db1:keys=437976,expires=0,avg_ttl=0*
-
->   You can alos access Redis instance by GUI client tool, such as creenshot of
->   **RedisDesktopManager** for accessing AWS Elasticache Redis instance:
+    And we can check in the source instance which is located in AWS Eleasticache
+    Redis instance via client tool **redis-cli**:
+    
+    ```
+    redis-cluster.*****.ng.0001.apne1.cache.amazonaws.com:6379\> info keyspace
+    # Keyspace
+    db1:keys=437976,expires=0,avg_ttl=0
+    ```
+    
+    You can alos access Redis instance by GUI client tool, such as screenshot of
+    **RedisDesktopManager** for accessing AWS Elasticache Redis instance:
 
 ![](images/9a81981d7890dec9ccd49ac789f03625.png)
 
