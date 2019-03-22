@@ -22,7 +22,7 @@ technical solution for those who need it.
 
 -   If your Redis instance to be migrated is self-build on servers, we recommend
     you migrate data with [Alibaba Cloud DTS
-    service](https://www.alibabacloud.com/product/data-transmission-service?spm=a2c63.p38356.1097638.dnavproductsd10.44cddcd2i2LDnZ).
+    service](https://www.alibabacloud.com/product/data-transmission-service).
 
 The overall network architecture is as follows：
 
@@ -82,7 +82,7 @@ Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-expo
 -   Download redis-port tool
 
 >   \# wget
->   <http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/85829/cn_zh/1533199526614/redis-port%282%29?spm=a2c4g.11186623.2.10.35d048d2Q12fTI>
+>   <http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/85829/cn_zh/1533199526614/redis-port%282%29>
 
 -   Restore rdb file to ApsaraDB for Redis instance
 
@@ -207,7 +207,7 @@ Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-expo
 >   Redis to Alibaba ApsaraDB for Redis instance.
 
 ## Further Reading
--   [Document Center \> ApsaraDB for Redis User Guide \> Migrate data](https://www.alibabacloud.com/help/doc-detail/85180.htm?spm=a2c63.p38356.a1.4.3fdadcd28nrUzM)
+-   [Document Center \> ApsaraDB for Redis User Guide \> Migrate data](https://www.alibabacloud.com/help/doc-detail/85180.htm)
 
 ## Support
 Don't hesitate to [contact us](mailto:projectdelivery@alibabacloud.com) if you have questions or remarks.
