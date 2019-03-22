@@ -18,7 +18,7 @@ technical solution for those who need it.
 
 **Note**:
 
--   This solution needs to plan business downtime for implementing
+-   This solution needs to plan business downtime for implementing.
 
 -   If your Redis instance to be migrated is self-build on servers, we recommend
     you migrate data with [Alibaba Cloud DTS service](https://www.alibabacloud.com/product/data-transmission-service).
@@ -31,21 +31,21 @@ This technical solution mainly includes the following main steps:
 
 -   Stop application to write data into AWS Elasticache Redis instance.
 
--   Make a backup of the data in AWS Elasticache Redis
+-   Make a backup of the data in AWS Elasticache Redis.
 
--   Export that backup-set to the AWS S3 bucket to get the RDB file
+-   Export that backup-set to the AWS S3 bucket to get the RDB file.
 
 -   Transfer the RDB file to the pre-created Alibaba Cloud ECS storage.
 
 -   Restore the RDB file to the pre-created ApsaraDB for Redis instance using
-    the redis-port tool
+    the redis-port tool.
 
 ## Backup and Export Data from AWS Elasticache Redis to S3 Bucket
 All following operations are performed on AWS.
 
 -   Stop writing data into AWS Elasticache Redis instance.
 
--   Create **Backup** to specific cluster
+-   Create **Backup** to specific cluster:
 
     ![](images/5905fb087626c9895e2af18963921adb.png)
 
@@ -53,9 +53,9 @@ All following operations are performed on AWS.
 
     ![](images/42348e56fedd06a3396f17f3692256dc.png)
 
-    Learn more from [Making Manual Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html)
+    Learn more from [Making Manual Backups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html).
 
--   **Export** backup to AWS S3 bucket
+-   **Export** backup to AWS S3 bucket:
 
     ![](images/53a7b81b5b7a6f7bcf63cf989f40fb11.png)
 
@@ -67,22 +67,22 @@ All following operations are performed on AWS.
 
     ![](images/dd908c64fb94d344a8ade9378fb36207.png)
 
-    Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
+    Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html).
 
--   Download and transform rdb file to cloud disk on Alibaba Cloud ECS instance
+-   Download and transform rdb file to cloud disk on Alibaba Cloud ECS instance.
 
-    -   Download rdb file from S3 bucket
+    -   Download rdb file from S3 bucket.
 
-    -   Upload rdb file to Alibaba Cloud ECS instance via SFTP protocol
+    -   Upload rdb file to Alibaba Cloud ECS instance via SFTP protocol.
 
 ## Restore RDB file to ApsaraDB for Redis instance
--   Download redis-port tool
+-   Download redis-port tool:
 
     ```bash
     wget http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/85829/cn_zh/1533199526614/redis-port%282%29
     ```
 
--   Restore rdb file to ApsaraDB for Redis instance
+-   Restore rdb file to ApsaraDB for Redis instance:
 
     ```bash
     nohup ./redis-port restore \
@@ -94,7 +94,7 @@ All following operations are performed on AWS.
         --rewrite &
     ```
 
-    You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md)
+    You can find option description from [README of redis-port](https://github.com/CodisLabs/redis-port/blob/redis-4.x-cgo/README.md).
 
 -   View the restore log records:
 
@@ -126,7 +126,7 @@ All following operations are performed on AWS.
     2018/12/12 18:00:00 [INFO] total = 122286452 - 122286452 [100%] entry=437976
     2018/12/12 18:00:00 [INFO] restore: rdb done*
     ```
--   Check the result
+-   Check the result:
 
     From redis-port log records, we can find *437976* keys has been imported
     into ApsaraDB for Redis instance.
@@ -156,7 +156,7 @@ All following operations are performed on AWS.
 
     ![](images/462465fbccdff9f10e03f6ca39f0f22a.png)
 
--   Make a plan to perform service traffic switchover to ApsaraDB for Redis instance
+-   Make a plan to perform service traffic switchover to ApsaraDB for Redis instance.
 
 >   Skip
 
