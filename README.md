@@ -55,25 +55,27 @@ The following operations are performed on AWS.
     > Note: you can learn more about how to make manual backups by reading
     > [this documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-manual.html).
 
--   **Export** backup to AWS S3 bucket:
+-   **Export** the backup to an AWS S3 bucket:
 
     ![](images/53a7b81b5b7a6f7bcf63cf989f40fb11.png)
 
-    After clicking button **Copy**, the exporting process will be starting:
+    After clicking on the **Copy** button, the export process starts:
 
     ![](images/293b7e6b326b0ac9ce1cb65ef09bd42b.png)
 
-    You can find exported files in S3 bucket:
+    You can find the exported files in your S3 bucket:
 
     ![](images/dd908c64fb94d344a8ade9378fb36207.png)
 
-    Learn more from [Exporting a Backup](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html).
+    > Note: to learn more about exporting backups, please look at
+    > [this documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html).
 
--   Download and transform rdb file to cloud disk on Alibaba Cloud ECS instance.
+-   Download the RDB file and upload it to an Alibaba Cloud ECS instance.
 
-    -   Download rdb file from S3 bucket.
+    -   Download the RDB file from your S3 bucket.
 
-    -   Upload rdb file to Alibaba Cloud ECS instance via SFTP protocol.
+    -   Upload the RDB file to your Alibaba Cloud ECS instance via
+        [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) (save it on the disk).
 
 ## Restore RDB file to ApsaraDB for Redis instance
 -   Download redis-port tool:
